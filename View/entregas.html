@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregas - Rede solidária</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+
+</head>
+<body style="background-color: #eee">
+    
+    <div id="header"></div>
+
+    <div class="container main-content d-flex justify-content-center align-items-center mt-3">
+        <div class="card border-light mb-3 w-75" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+            <div class="card-header card-header-gradient" style="text-align: center;">Entregas disponíveis</div>
+            <div class="card-body">
+                <table class="table table-bordered hover" id="tabela_entregas_disponiveis">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">ONG</th>
+                        <th scope="col">Endereço</th>
+                        <th scope="col">Opções</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mãos Unidas</td>
+                        <td>Rua das Palmeiras, 250</td>
+                        
+                        <td>
+                            <a class="btn btn-ghost-primary table-action-btn" data-id="" data-toggle="tooltip" title="Aceitar entrega" onclick="" style="color:green"><i class="fa-solid fa-thumbs-up"></i></a>
+                            <a class="btn btn-ghost-primary table-action-btn" data-id="" data-toggle="tooltip" title="Rejeitar entrega" onclick="" style="color:red"><i class="fa-solid fa-thumbs-down"></i></a>
+                        </td>
+                      </tr>
+                      
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/js/dataTables.js"></script>
+    <script src="/public/js/header.js"></script>
+    <script src="/public/js/entregas.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doadores - Rede solidária</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body style="background-color: #eee">
+    
+    <div id="header"></div>
+
+    <div class="container main-content d-flex justify-content-center align-items-center mt-3">
+        <div class="card border-light mb-3 w-75" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+            <div class="card-header card-header-gradient" style="text-align: center;">Lista de doações</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Item de doação</label>
+                        <select class="form-control">
+                            <option value="">Selecione</option>
+                            <option value="Arroz">Arroz</option>
+                            <option value="Feijão">Feijão</option>
+                            <option value="Acucar">Açucar</option>
+                            <option value="Oleo">Óleo</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <div class="row mt-2" style="text-align: right;">
+                    <div class="col-md-12">
+                        <input class="btn" value="Buscar" type="button" style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593); color: #fff;">
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <table class="table table-bordered hover" id="tabela_doacoes">
+                            <thead>
+                              <tr>
+                                <!-- <th scope="col">ID</th> -->
+                                <th scope="col">Nome</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Endereço</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Opções</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <!-- <th scope="row">1</th> -->
+                                <td>Tio João</td>
+                                <td>Arroz</td>
+                                <td>Avenida Portugal, 46, Galpão 01, Setor C1, Itapevi - SP, CEP: 06696-060</td>
+                                <td>50 KG</td>
+                                <td>
+                                    <a class="btn btn-ghost-primary table-action-btn" data-id="" data-toggle="tooltip" title="Solicitar entrega" onclick="Carregar()" style="color:green"><i class="fa-solid fa-truck"></i></a>
+                                   
+                                </td>
+                              </tr>
+                              
+                              
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" tabindex="-1" id="modal_doacao">
+        <div class="modal-dialog modal-lg"> <!-- Classe modal-lg adicionada -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Solicitar doação</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row mt-2">
+                <div class="col-md-6">
+                    <label>Nome do doador:</label>
+                    <input class="form-control" type="text" id="" name="" value="Tio João" readonly>
+                </div>
+                <div class="col-md-6">
+                    <label>Item:</label>
+                    <input class="form-control" type="text" id="" name="" value="Arroz" readonly>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-12">
+                    <label>Endereço:</label>
+                    <input class="form-control" type="text" id="" name="" value="Avenida Portugal, 46, Galpão 01, Setor C1, Itapevi - SP, CEP: 06696-060" readonly>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-6">
+                    <label>Quantidade:</label>
+                    <input class="form-control" type="number" id="" name="">
+                </div>
+                <div class="col-md-6">
+                    <label>Medida:</label>
+                    <select class="form-control" id="" name="">
+                        <option value="">Selecione</option>
+                        <option value="KG">KG</option>
+                        <option value="Gramas">Gramas</option>
+                    </select>
+                </div>
+              </div>
+              <!-- <div class="row mt-2">
+                <div class="col-md-12">
+                    <label>Tipo de entrega</label>
+                    <select class="form-control" id="" name="">
+                        <option value="">Selecione</option>
+                        <option value="">Propria</option>
+                        <option value="">Terceiro</option>
+                    </select>
+                </div>
+              </div> -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fehcar</button>
+              <button type="button" class="btn" style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);color:white;">Solicitar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+      
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/js/dataTables.js"></script>
+    <script src="/public/js/header.js"></script>
+    <script src="/public/js/listaDoadores.js"></script>
+    
+</body>
+</html>
