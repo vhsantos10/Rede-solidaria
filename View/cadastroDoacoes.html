@@ -3,87 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cadastro de doações - Rede solidária</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Cadastro de Doações - Rede Solidária</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/header.css">
     <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body style="background-color: #eee">
-    
     <div id="header"></div>
 
-    <div class="container main-content d-flex justify-content-center align-items-center mt-3">
-        <div class="card border-light mb-3 w-75" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
-            <div class="card-header card-header-gradient"">Cadastro de doações</div>
+    <div class="container py-5">
+        <div id="mensagemErro" class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+            Ocorreu um erro ao cadastrar a doação.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+
+        <div id="mensagemSucesso" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+            Doação cadastrada com sucesso!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+
+        <div class="card border-light w-75 mx-auto" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+            <div class="card-header card-header-gradient">Cadastro de Doações</div>
             <div class="card-body">
                 <div class="row mt-2">
                     <div class="col-md-6">
                         <label>Tipo de doação:</label>
-                        <select class="form-control">
+                        <select class="form-control" id="tipoDoacao" name="tipoDoacao">
                             <option value="">Selecione</option>
-                            <option value="Alimentos">Alimentos</option>
-                            <option value="Roupas">Roupas</option>
-                            <option value="Calcados">Calçados</option>
+                            <option value="1">Alimentos</option>
+                            <!-- <option value="2">Roupas</option>
+                            <option value="3">Calçados</option> -->
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label>Nome do item:</label>
-                        <select class="form-control">
+                        <select class="form-control" id="nomeItem" name="nomeItem">
                             <option value="">Selecione</option>
+                            <option value="Açúcar">Açúcar</option>
                             <option value="Arroz">Arroz</option>
+                            <option value="Café">Café</option>
                             <option value="Feijão">Feijão</option>
-                            <option value="Acucar">Açucar</option>
-                            <option value="Oleo">Óleo</option>
+                            <option value="Macarrão">Macarrão</option>
+                            <option value="Molho de tomate">Molho de tomate</option>
+                            <option value="Óleo">Óleo</option>
+                            <option value="Sal">Sal</option>
                             <option value="Outros">Outros</option>
                         </select>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-12">
-                        <labe>Se for outro, digite aqui</labe>
-                        <input class="form-control" type="text" id="" name="" placeholder="Digite aqui">
+                        <label>Se for outro, digite aqui:</label>
+                        <input class="form-control" type="text" id="outroItem" name="outroItem" placeholder="Digite aqui">
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6">
                         <label>Quantidade:</label>
-                        <input class="form-control" type="number" id="" name="">
+                        <input class="form-control" type="text" id="quantidade" name="quantidade">
                     </div>
                     <div class="col-md-6">
                         <label>Medida:</label>
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="medida" name="medida">
                             <option value="">Selecione</option>
                             <option value="KG">KG</option>
-                            <option value="Gramas">Gramas</option>
-                            <option value="Peças">Peças</option>
+                            <option value="G">Gramas</option>
+                            <option value="L">Litro</option>
+                            <option value="ML">Militro</option>
+                            <option value="UNID">Unidade</option>
+                            <option value="CX">Caixa</option>
+                            <option value="PC">Pacote</option>
+                            <option value="SC">Saco</option>
+                            <option value="M">Metro</option>
+                            <option value="CM">Centimetro</option>
                         </select>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-12">
                         <label>Entrega:</label>
-                        <select class="form-control">
+                        <select class="form-control" id="entrega" name="entrega">
                             <option value="">Selecione</option>
-                            <option value="Propria">Propria</option>
+                            <option value="Própria">Própria</option>
                             <option value="Terceiro">Terceiro</option>
                         </select>
                     </div>
                 </div>
-                <div class="row mt-2" style="text-align: right;">
+                <div class="row mt-3 text-end">
                     <div class="col-md-12">
-                        <input class="btn" type="button" value="Cadastrar" style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593); color: #fff;">
+                        <button class="btn btn-editar" id="btnCadastrarDoacao">
+                            <span id="textoBotaoDoacao">Cadastrar</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="/public/js/header.js"></script>
-    <script src="/public/js/listaDoadores.js"></script>
-    
+    <script src="/public/js/cadastroDoacoes.js"></script>
 </body>
 </html>

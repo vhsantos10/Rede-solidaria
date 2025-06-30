@@ -1,124 +1,91 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acompanhar doações - Rede solidária</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/public/css/dataTables.dataTables.css" />
-    <link rel="stylesheet" href="/public/css/header.css">
-    <link rel="stylesheet" href="/public/css/acompanharDoacoes.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minhas solicitações - Rede Solidária</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/public/css/dataTables.dataTables.css" />
+  <link rel="stylesheet" href="/public/css/header.css" />
+  <link rel="stylesheet" href="/public/css/style.css" />
 </head>
-<body style="background-color: #eee">
-    
-    <div id="header"></div>
-    
-    <div class="container main-content d-flex justify-content-center align-items-center mt-3">
-        <div class="card border-light mb-3 w-90" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
-            <div class="card-header card-header-gradient" style="text-align: center;">Acompanhar doações ONG</div>
-            <div class="card-body">
-                <table class="table table-bordered hover" id="tabela_acompanhar_doacoes_ong">
-                    <thead>
-                      <tr>
-                        <!-- <th scope="col">ID</th> -->
-                        <th scope="col">Doador</th>
-                        <th scope="col">Endereço</th>
-                        <th scope="col">Quantidade</th>
-                        <th scope="col">Transportador</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Opções</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>Tio João</th>
-                        <td>Avenida Portugal, 46, Galpão 01, Setor C1, Itapevi - SP, CEP: 06696-060</td>
-                        <td>50 KG</td>
-                        <td>José João</td>
-                        <td style="color:green;">Em andamento</td>
-                        <td>
-                            <a class="btn btn-ghost-primary table-action-btn" data-id="" data-toggle="tooltip" title="Status da entrega" onclick="Carregar()" style="color:purple"><i class="fa-solid fa-chart-simple"></i></a>
-                            <a class="btn btn-ghost-primary table-action-btn" data-id="" data-toggle="tooltip" title="Nota de transporte" onclick="Carregar()" style="color:red"><i class="fa-regular fa-file-pdf"></i></a>
-                            <a class="btn btn-ghost-primary table-action-btn" data-id="" data-toggle="tooltip" title="Contato com transportador" onclick="Carregar()" style="color:green"><i class="fa-brands fa-whatsapp"></i></a>
-                            
-                        </td>
-                      </tr>
-                      
-                      
-                    </tbody>
-                  </table>
-            </div>
+<body class="bg-light">
+  <div id="header"></div>
+
+  <div id="loader">
+    <div class="row justify-content-center align-items-center mt-3 text-center">
+      <div class="col-md-12">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Carregando...</span>
         </div>
+        <p>Carregando solicitações...</p>
+      </div>
     </div>
+  </div>
 
-
-    <div class="modal" tabindex="-1" id="modal_acompanhar_doacoes_ong">
-        <div class="modal-dialog modal-lg"> <!-- Classe modal-lg adicionada -->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Acompanhar doação ONG</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row mt-2">
-                <div class="col-md-6">
-                    <label>Nome do doador:</label>
-                    <input class="form-control" type="text" id="" name="" value="Tio João" readonly>
-                </div>
-                <div class="col-md-6">
-                    <label>Item:</label>
-                    <input class="form-control" type="text" id="" name="" value="Arroz" readonly>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-12">
-                    <label>Endereço:</label>
-                    <input class="form-control" type="text" id="" name=""  value="Avenida Portugal, 46, Galpão 01, Setor C1, Itapevi - SP, CEP: 06696-060" readonly>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-12">
-                    <label>Quantidade:</label>
-                    <input class="form-control" type="text" id="" name="" value="50 KG" readonly>
-                </div>
-                
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-6">
-                    <label>Tipo de entrega:</label>
-                    <input class="form-control" type="text" id="" name="" value="Própria" readonly>
-                </div>
-                <div class="col-md-6">
-                    <label>Status da entrega:</label>
-                    <input class="form-control" type="text" id="" name="" value="Em andamento" readonly>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-6">
-                    <label>Data da solicitação:</label>
-                    <input class="form-control" type="text" id="" name="" value="01/01/2025" readonly>
-                </div> 
-                <div class="col-md-6">
-                    <label>Data da entrega:</label>
-                    <input class="form-control" type="text" id="" name="" value="15/01/2025" readonly>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fehcar</button>
-              <button type="button" class="btn" style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);color:white;">Solicitar</button>
-            </div>
-          </div>
-        </div>
+  <div class="container main-content d-flex justify-content-center align-items-center mt-3">
+    <div class="card border-light mb-3 w-100 shadow-custom">
+      <div class="card-header card-header-gradient text-center">Minhas solicitações de doações</div>
+      <div class="card-body">
+        <table class="table table-bordered hover" id="tabela_solicitacoes_ong">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Unidade</th>
+              <th>Solicitada em</th>
+              <th>Status</th>
+              <th>Transportador</th>
+              <th>Entregue em</th>
+              <th>Opções</th>
+            </tr>
+          </thead>
+          <tbody id="tabela_solicitacoes_ong_body"></tbody>
+        </table>
+      </div>
     </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/js/dataTables.js"></script>
-    <script src="/public/js/header.js"></script>
-    <script src="/public/js/acompanharDoacoesOng.js"></script>
-    
+  <!-- Modal de Status Detalhado -->
+<div class="modal fade" id="modal_status_detalhado" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content rounded-3 shadow">
+      <div class="modal-header modal-header-custom">
+        <h5 class="modal-title" id="statusModalLabel">📊 Status detalhado da doação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <strong>Solicitada em:</strong> <span id="status_solicitada"></span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <strong>Aceita em:</strong> <span id="status_aceita"></span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <strong>Enviada em:</strong> <span id="status_enviada"></span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <strong>Entregue em:</strong> <span id="status_entregue"></span>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button class="btn btn-success">Concluir doação</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/public/js/dataTables.js"></script>
+  <script src="/public/js/header.js"></script>
+  <script src="/public/js/acompanharDoacoesOng.js"></script>
 </body>
 </html>

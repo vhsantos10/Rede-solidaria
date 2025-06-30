@@ -1,0 +1,23 @@
+.card h5 {
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#dashboard-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.grafico-wrapper {
+  max-width: 500px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+#graficoStatus {
+  width: 100% !important;
+  height: auto !important;
+}

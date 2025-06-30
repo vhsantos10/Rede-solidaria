@@ -28,5 +28,45 @@ $(document).ready(function () {
                 // Isso é garantido não chamando 'collapse('show')'
             }
         });
+
+        // Controle de visibilidade dos menus baseado na role
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            // Sem token? Redireciona pro login
+            window.location.href = "/View/login.html";
+            return;
+        }
+
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const role = payload.role;
+
+            // Esconde todos os menus
+            $("#collapseThree").closest(".nav-item").hide(); // ONG
+            $("#collapseFour").closest(".nav-item").hide(); // DOADOR
+            $("#collapseTwo").closest(".nav-item").hide();  // TRANSPORTADOR
+
+            // Exibe só o menu da role atual
+            if (role === "ong") {
+                $("#collapseThree").closest(".nav-item").show();
+            } else if (role === "donor") {
+                $("#collapseFour").closest(".nav-item").show();
+            } else if (role === "transporter") {
+                $("#collapseTwo").closest(".nav-item").show();
+            }
+
+            // Nome do usuário no topo (se quiser)
+            if (payload.name) {
+                //$("#userDropdown").text(payload.name);
+                const nomeSeguro = $('<div>').text(payload.name).html(); // escapa qualquer coisa
+                $("#userDropdown").html(nomeSeguro);
+            }
+
+        } catch (e) {
+            console.error("Token inválido:", e);
+            window.location.href = "/View/login.html";
+        }
+
     });
 });

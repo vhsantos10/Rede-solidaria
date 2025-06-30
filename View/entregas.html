@@ -30,13 +30,12 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Mãos Unidas</td>
-                        <td>Rua das Palmeiras, 250</td>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
                         
                         <td>
-                            <a class="btn btn-ghost-primary table-action-btn" data-id="" data-toggle="tooltip" title="Aceitar entrega" onclick="" style="color:green"><i class="fa-solid fa-thumbs-up"></i></a>
-                            <a class="btn btn-ghost-primary table-action-btn" data-id="" data-toggle="tooltip" title="Rejeitar entrega" onclick="" style="color:red"><i class="fa-solid fa-thumbs-down"></i></a>
+                            
                         </td>
                       </tr>
                       
@@ -46,6 +45,28 @@
             </div>
         </div>
     </div>
+
+
+<!-- Modal de confirmação -->
+<div class="modal fade" id="modalConfirmarEntrega" tabindex="-1" aria-labelledby="modalConfirmarEntregaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header modal-header-custom">
+        <h5 class="modal-title" id="modalConfirmarEntregaLabel">Confirmar entrega</h5>
+        <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja aceitar a entrega <strong>#<span id="entregaIdModal"></span></strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn-editar" id="btnConfirmarAceite">Sim, aceitar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
